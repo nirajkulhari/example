@@ -1,3 +1,6 @@
 sample
 somepassword
 newchanges
+CHANGE1
+cHANGE2
+cHange3
