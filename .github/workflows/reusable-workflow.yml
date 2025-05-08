@@ -1,0 +1,29 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+      environment:
+        required: false
+        type: string
+        default: "development"
+    secrets:
+      API_KEY:
+        required: true
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print input values
+        run: |
+          echo "Hello, ${{ inputs.username }}!"
+          echo "Environment: ${{ inputs.environment }}"
+
+      - name: Use secret
+        run: echo "Using secret API key (not printing for security)"
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
